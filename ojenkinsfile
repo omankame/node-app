@@ -2,11 +2,13 @@ pipeline {
     agent any
     environment{
         DOCKER_TAG = getDockerTag()
+        NAME = 'ricardo'
     }
     stages{
         stage('Build Docker Image'){
             steps{
                 sh 'echo $DOCKER_TAG'
+                sh 'echo $NAME'
                 sh 'docker build . -t omkarm/nodeapp:${DOCKER_TAG}'
             }
         }
