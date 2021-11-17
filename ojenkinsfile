@@ -6,7 +6,8 @@ pipeline {
     stages{
         stage('Build Docker Image'){
             steps{
-                sh "docker build . -t omkarm/nodeapp:${DOCKER_TAG}"
+                sh 'echo $secret'
+                sh 'docker build . -t omkarm/nodeapp:${DOCKER_TAG}'
             }
         }
     }
@@ -14,6 +15,6 @@ pipeline {
 
 def getDockerTag(){
 //    def tag = sh script: 'git rev-parse HEAD', returnStdout: true
-     def tag = sh script: 'git rev-parse HEAD | wc -l', returnStdout: true
+      def tag = sh script: 'git rev-parse HEAD | wc -l', returnStdout: true
     return
 }
