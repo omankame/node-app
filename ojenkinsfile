@@ -15,7 +15,8 @@ pipeline {
     }
 }
 
-def getDockerTag(){
+def getDockerTag()
+{
         def tag = sh script: 'git rev-parse HEAD'
 //      def tag = sh script: 'git rev-parse HEAD | wc -l', returnStdout: true
     return
