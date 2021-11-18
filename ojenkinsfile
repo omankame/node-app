@@ -31,9 +31,12 @@ pipeline {
                          script{
                              try{
                                 sh 'ssh root@10.32.192.132 "kubectl apply -f /home/master/node-app/services.yml" '
+                                sh 'ssh root@10.32.192.132 "kubectl apply -f /home/master/node-app/node-app-pod.yml"'
                              
                              }catch(error){
-                                sh 'ssh root@10.32.192.132 "kubectl create -f /home/master/node-app/*.yml" '
+                                sh 'ssh root@10.32.192.132 "kubectl create -f /home/master/node-app/services.yml" '
+                                sh 'ssh root@10.32.192.132 "kubectl create -f /home/master/node-app/node-app-pod.yml" '
+                                
                              } 
                          }
                }
