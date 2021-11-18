@@ -30,10 +30,10 @@ pipeline {
                          sh 'scp -o StrictHostKeyChecking=no  services.yml node-app-pod.yml root@10.32.192.132:/home/master/node-app/'
                          script{
                              try{
-                                sh 'ssh root@10.32.192.132 kubectl apply -f /home/master/node-app/*.yml'
+                                sh 'ssh root@10.32.192.132 "kubectl apply -f /home/master/node-app/services.yml" '
                              
                              }catch(error){
-                                sh 'ssh root@10.32.192.132 kubectl create -f /home/master/node-app/*.yml'
+                                sh 'ssh root@10.32.192.132 "kubectl create -f /home/master/node-app/*.yml" '
                              } 
                          }
                }
